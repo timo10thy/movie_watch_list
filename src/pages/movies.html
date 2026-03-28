@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="../output.css" rel="stylesheet">
-    <script src="../script.js"></script>
+    
 </head>
 <body class="bg-gray-900">
+    
     <!--Header-->
     <header class="shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -54,6 +55,77 @@
     </div>
   </section>
   
+  <!-- Movie Grid -->
+  <main class="max-w-7xl mx-auto px-4 pb-10">
+    <div 
+        id="movies-grid"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+      <!-- Movie Card -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
+        <img src="/src/public/photo_2026-03-28_21-50-18.jpg" alt="Movie Poster" class="w-full h-72 object-cover"/>
+        <div class="p-3">
+          <h2 class="text-sm font-semibold text-white">Havoc</h2>
+          <p class="text-xs text-gray-400">2025 • Action</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-yellow-400 text-sm">⭐ 8.5</span>
+            <button class="text-red-500 text-xs hover:underline">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
+        <img src="/src/public/photo_2026-03-28_21-57-59.jpg" alt="Movie Poster" class="w-full h-72 object-cover"/>
+        <div class="p-3">
+          <h2 class="text-sm font-semibold text-white">Monkey Man</h2>
+          <p class="text-xs text-gray-400">2024 • Drama</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-yellow-400 text-sm">⭐ 7.9</span>
+            <button class="text-red-500 text-xs hover:underline">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
+        <img src="/src/public/photo_2026-03-28_22-05-19.jpg" alt="Movie Poster" class="w-full h-72 object-cover"/>
+        <div class="p-3">
+          <h2 class="text-sm font-semibold text-white">Rebel Moon</h2>
+          <p class="text-xs text-gray-400">2023 • Sci-Fi</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-yellow-400 text-sm">⭐ 9.1</span>
+            <button class="text-red-500 text-xs hover:underline">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
+        <img src="/src/public/photo_2026-03-28_22-12-29.jpg" alt="Movie Poster" class="w-full h-72 object-cover"/>
+        <div class="p-3">
+          <h2 class="text-sm font-semibold text-white">The Adam Project</h2>
+          <p class="text-xs text-gray-400">2022 • Comedy</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-yellow-400 text-sm">⭐ 6.8</span>
+            <button class="text-red-500 text-xs hover:underline">Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition">
+        <img src="/src/public/photo_2026-03-28_22-16-06.jpg" alt="Movie Poster" class="w-full h-72 object-cover"/>
+        <div class="p-3">
+          <h2 class="text-sm font-semibold text-white">Avengers: Doomsday</h2>
+          <p class="text-xs text-gray-400">2026 • Adventure</p>
+          <div class="flex justify-between items-center mt-2">
+            <span class="text-yellow-400 text-sm">⭐ 8.9</span>
+            <button class="text-red-500 text-xs hover:underline">Details</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../script.js"></script>
 
 </body>
 </html>
