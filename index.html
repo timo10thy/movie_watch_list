@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FiveWatch — Movie Streaming</title>
+
+  <!-- index.html is at root, output.css is at src/output.css -->
+  <link href="src/output.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+
+<body class="bg-[#0f0f0f] text-white font-[Inter] antialiased">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo — index.html is the current file, href="index.html" is fine -->
+      <a href="index.html" class="text-3xl text-red-600 font-[Bebas_Neue] tracking-wide">
+        FIVE<span class="text-white">WATCH</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <!-- index.html → src/pages/*.html -->
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html"                class="text-red-600">Home</a>
+        <a href="src/pages/movies.html"     class="text-gray-400 hover:text-white transition-colors">Browse Movies</a>
+        <a href="src/pages/details.html"    class="text-gray-400 hover:text-white transition-colors">Movie Details</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="src/pages/login.html"  class="text-gray-400 hover:text-white text-sm transition-colors">Login</a>
+        <a href="src/pages/movies.html" class="bg-red-600 hover:bg-red-700 px-5 py-2 text-sm rounded font-semibold transition-colors">
+          Browse Now
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1">
+        <span class="w-6 h-0.5 bg-white rounded"></span>
+        <span class="w-6 h-0.5 bg-white rounded"></span>
+        <span class="w-4 h-0.5 bg-white rounded"></span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#1c1c1c] border-t border-white/10 px-5 py-4 flex-col gap-4">
+    <a href="index.html"             class="text-red-600 text-sm font-medium block">Home</a>
+    <a href="src/pages/movies.html"  class="text-gray-400 hover:text-white text-sm font-medium block transition-colors">Browse Movies</a>
+    <a href="src/pages/details.html" class="text-gray-400 hover:text-white text-sm font-medium block transition-colors">Movie Details</a>
+    <a href="src/pages/login.html"   class="text-gray-400 hover:text-white text-sm font-medium block transition-colors">Login</a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="pt-16 min-h-[92vh] flex items-center bg-[url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600&q=80')] bg-cover bg-center">
+  <div class="bg-black/70 w-full">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24">
+      <div class="max-w-2xl">
+
+        <p class="text-red-600 text-sm font-semibold tracking-widest uppercase mb-4">
+          #1 Streaming Destination
+        </p>
+
+        <h1 class="text-6xl md:text-8xl font-[Bebas_Neue] leading-none mb-6">
+          MOVIES<br>
+          <span class="text-red-600">WITHOUT</span><br>
+          LIMITS
+        </h1>
+
+        <p class="text-gray-400 mb-10 max-w-md leading-relaxed">
+          Browse films, watch trailers, and build your personal watchlist — all in one cinematic experience.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="src/pages/movies.html"
+             class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded font-semibold transition-colors">
+            Browse Movies
+          </a>
+          <a href="src/pages/login.html"
+             class="border border-white/40 hover:bg-white/10 px-8 py-3 rounded transition-colors">
+            Sign In
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS -->
+<section class="bg-[#1c1c1c] border-y border-white/10 py-8">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+    <div>
+      <p class="text-red-600 text-3xl font-[Bebas_Neue]">500+</p>
+      <p class="text-gray-400 text-sm">Movies</p>
+    </div>
+
+    <div>
+      <p class="text-red-600 text-3xl font-[Bebas_Neue]">4K</p>
+      <p class="text-gray-400 text-sm">Ultra HD</p>
+    </div>
+
+    <div>
+      <p class="text-red-600 text-3xl font-[Bebas_Neue]">20+</p>
+      <p class="text-gray-400 text-sm">Genres</p>
+    </div>
+
+    <div>
+      <p class="text-red-600 text-3xl font-[Bebas_Neue]">Free</p>
+      <p class="text-gray-400 text-sm">No Subscription</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FEATURED MOVIES -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3">
+      <div class="w-1 h-7 bg-red-600 rounded"></div>
+      <h2 class="text-3xl font-[Bebas_Neue] tracking-wide">Featured Movies</h2>
+    </div>
+    <a href="src/pages/movies.html"
+       class="text-red-500 hover:text-red-600 text-sm font-medium transition-colors">
+      View All →
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Card 1 — Interstellar -->
+    <div class="bg-[#1c1c1c] rounded-lg overflow-hidden hover:ring-2 ring-red-500 transition-all">
+      <div class="relative">
+        <img
+          src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&q=80"
+          alt="Interstellar"
+          class="w-full h-72 object-cover"
+        />
+        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">
+          &#9733; 8.6
+        </span>
+      </div>
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="font-semibold text-white">Interstellar</h3>
+          <span class="text-gray-400 text-xs">2014</span>
+        </div>
+        <p class="text-gray-400 text-xs mb-3">Sci-Fi • Adventure</p>
+        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+          A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
+        </p>
+        <!-- details.html is at src/pages/details.html -->
+        <a href="src/pages/details.html"
+           class="block bg-red-600 hover:bg-red-700 text-center py-2 rounded text-sm font-semibold transition-colors">
+          View Details
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2 — The Dark Knight -->
+    <div class="bg-[#1c1c1c] rounded-lg overflow-hidden hover:ring-2 ring-red-500 transition-all">
+      <div class="relative">
+        <img
+          src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80"
+          alt="The Dark Knight"
+          class="w-full h-72 object-cover"
+        />
+        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">
+          &#9733; 9.0
+        </span>
+      </div>
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="font-semibold text-white">The Dark Knight</h3>
+          <span class="text-gray-400 text-xs">2008</span>
+        </div>
+        <p class="text-gray-400 text-xs mb-3">Action • Crime</p>
+        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+          When the Joker wreaks havoc on Gotham, Batman must confront one of the greatest psychological tests of his ability to fight injustice.
+        </p>
+        <a href="src/pages/details.html"
+           class="block bg-red-600 hover:bg-red-700 text-center py-2 rounded text-sm font-semibold transition-colors">
+          View Details
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3 — Inception -->
+    <div class="bg-[#1c1c1c] rounded-lg overflow-hidden hover:ring-2 ring-red-500 transition-all">
+      <div class="relative">
+        <img
+          src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&q=80"
+          alt="Inception"
+          class="w-full h-72 object-cover"
+        />
+        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">
+          &#9733; 8.8
+        </span>
+      </div>
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="font-semibold text-white">Inception</h3>
+          <span class="text-gray-400 text-xs">2010</span>
+        </div>
+        <p class="text-gray-400 text-xs mb-3">Thriller • Sci-Fi</p>
+        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+          A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea.
+        </p>
+        <a href="src/pages/details.html"
+           class="block bg-red-600 hover:bg-red-700 text-center py-2 rounded text-sm font-semibold transition-colors">
+          View Details
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Browse All CTA -->
+  <div class="mt-12 text-center">
+    <a href="src/pages/movies.html"
+       class="bg-red-600 hover:bg-red-700 text-white font-semibold px-10 py-3 rounded transition-colors inline-block">
+      Browse All Movies
+    </a>
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#1c1c1c] border-t border-white/10 py-8">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+      <a href="index.html" class="text-2xl font-[Bebas_Neue] tracking-widest text-red-600">
+        FIVE<span class="text-white">WATCH</span>
+      </a>
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <a href="index.html"             class="text-red-500 hover:text-red-600 transition-colors">Home</a>
+        <a href="src/pages/movies.html"  class="text-gray-400 hover:text-white transition-colors">Browse Movies</a>
+        <a href="src/pages/details.html" class="text-gray-400 hover:text-white transition-colors">Movie Details</a>
+        <a href="src/pages/login.html"   class="text-gray-400 hover:text-white transition-colors">Login</a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-6 text-center text-gray-400 text-sm">
+      &copy; 2026 FiveWatch — Educational Project
+    </div>
+
+  </div>
+</footer>
+
+
+<script src="js_pages/script.js">
+  document.getElementById('hamburger').addEventListener('click', function () {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('flex');
+  });
+</script>
+
+</body>
+</html>
