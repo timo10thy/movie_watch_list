@@ -1,5 +1,15 @@
+//  HAMBURGER MENU TOGGLE — index.html
+const hamburger = document.getElementById('hamburger');
+if (hamburger) {
+  hamburger.addEventListener('click', function () {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('flex');
+  });
+}
 
 //  HELPERS
+
 function showError(id, message) {
   const el = document.getElementById(id);
   if (el) {
@@ -15,7 +25,7 @@ function hideError(id) {
   }
 }
 
-//  SIGN UP LOGIC
+//  SIGN UP LOGIC — src/pages/signup.html
 const signupBtn = document.getElementById('signup-btn');
 if (signupBtn) {
   signupBtn.addEventListener('click', function () {
@@ -76,20 +86,20 @@ if (signupBtn) {
     existingUsers.push(newUser);
     localStorage.setItem('users', JSON.stringify(existingUsers));
 
-    // 
-    // hidden card
+    //SUCCESS
+    // 1. Hide the form card completely
     const formCard = document.getElementById('form-card');
     if (formCard) {
       formCard.classList.add('hidden');
     }
 
-    // success message
+    // 2. Show the success card
     const successCard = document.getElementById('success-card');
     if (successCard) {
       successCard.classList.remove('hidden');
     }
 
-    // count down bar
+    // 3. Start 5 second countdown with progress bar
     let timeLeft = 5;
     const countdownEl  = document.getElementById('countdown-number');
     const progressBar  = document.getElementById('progress-bar');
@@ -102,11 +112,12 @@ if (signupBtn) {
         countdownEl.textContent = timeLeft;
       }
 
+      // Shrink the progress bar — each second removes 20%
       if (progressBar) {
         progressBar.style.width = (timeLeft * 20) + '%';
       }
 
-      
+      // When countdown hits 0 — redirect
       if (timeLeft <= 0) {
         clearInterval(timer);
         window.location.href = 'login.html';
@@ -117,7 +128,8 @@ if (signupBtn) {
   });
 }
 
-//  LOGIN LOGIC
+//  LOGIN LOGIC — src/pages/login.html
+//  Email + password only
 
 const loginBtn = document.getElementById('login-btn');
 if (loginBtn) {
@@ -168,7 +180,11 @@ if (loginBtn) {
   });
 }
 
+
+
 //  ROUTE PROTECTION
+//  Call protectPage() at the top of any page
+//  that requires the user to be logged in
 
 function protectPage() {
   const currentUser = localStorage.getItem('currentUser');
