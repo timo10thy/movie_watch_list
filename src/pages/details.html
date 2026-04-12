@@ -2,144 +2,138 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details-Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="../output.css" rel="stylesheet">
-    <script src="../script.js"></script>
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Details — FiveWatch</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="../output.css" rel="stylesheet">
 </head>
 
-<body class="bg-black">
+<body class="bg-[#0f0f0f] text-white antialiased min-h-screen">
+  
+       <!-- NAVBAR -->  
+  <nav class="bg-black/90 backdrop-blur fixed top-0 left-0 w-full z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 md:h-16">
 
+        <!-- Logo -->
+        <a href="../../index.html" class="text-2xl md:text-3xl font-bold text-red-600 tracking-wide">
+          FIVE<span class="text-white">WATCH</span>
+        </a>
 
-    <!-- Navbar -->
-    <nav class="bg-black fixed top-0 left-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-
-                <!-- Logo -->
-                <div class="flex-shrink-0 text-xl font-bold text-white">
-                    <span class="text-red-700 font-bold">FIVE</span> <span class="font-bold">WATCH</span>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-6">
-                    <a href="index.html" class="text-gray-400 hover:text-white">Home</a>
-                    <a href="movies.html" class="text-gray-400 hover:text-white">Browse Movies</a>
-                    <a href="details.html" class="text-red-700 font-bold hover:text-white">Movies Details</a>
-                </div>
-
-                <!-- Search + Profile -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <input type="text" placeholder="Search..."
-                        class="px-3 py-1 rounded bg-red-700 text-white focus:outline-none">
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden text-white">
-                    <button id="menu-btn" class="focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-
-            </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="../../index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
+          <a href="movies.html"      class="text-gray-400 hover:text-white transition-colors">Browse Movies</a>
+          <a href="details.html"     class="text-red-600 font-semibold">Movie Details</a>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
-            <a href="index.html" class="block py-2 text-white hover:text-red-400">Home</a>
-            <a href="movies.html" class="block py-2 text-white hover:text-red-400">Browse Movies</a>
-            <a href="details.html" class="block py-2 text-red-700 font-bold hover:text-red-400">Movies Details</a>
-            <input type="text" placeholder="Search..."
-                class="w-full mt-2 px-3 py-1 rounded bg-red-700 text-white focus:outline-none">
+        <!-- Desktop Login -->
+        <div class="hidden md:flex items-center gap-4">
+          <a href="login.html" class="text-gray-400 hover:text-white text-sm transition-colors">Login</a>
         </div>
-    </nav>
 
+        <!-- Mobile Hamburger — id="hamburger" -->
+        <div class="md:hidden text-white">
+          <button id="hamburger" class="focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
 
-
-    <div id="container">
-
+      </div>
     </div>
 
+    <!-- Mobile Menu —-->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#1c1c1c] border-t border-white/10 px-4 py-4 flex-col gap-3">
+      <a href="../../index.html" class="block py-2 text-white hover:text-red-400 text-sm transition-colors">Home</a>
+      <a href="movies.html"      class="block py-2 text-white hover:text-red-400 text-sm transition-colors">Browse Movies</a>
+      <a href="details.html"     class="block py-2 text-red-600 font-semibold text-sm">Movie Details</a>
+      <a href="login.html"       class="block py-2 text-white hover:text-red-400 text-sm transition-colors">Login</a>
+    </div>
+  </nav>
 
 
+   <!-- MAIN  -->
+  <main class="max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-24 pb-16">
 
-    <!-- Footer -->
-    <footer class="bg-black text-gray-400 mt-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div id="loading" class="text-center py-24 text-gray-400 text-sm">
+      Loading movie details...
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Filled by script.js using ?id= from URL -->
+    <div id="container"></div>
 
-                <!-- Brand -->
-                <div>
-                    <h2 class="text-white text-xl font-bold mb-3">
-                        <span class="text-red-700">FIVE</span> WATCH
-                    </h2>
-                    <p class="text-sm">
-                        Your go-to platform for discovering and streaming the best movies anytime, anywhere.
-                    </p>
-                </div>
+  </main>
 
-                <!-- Links -->
-                <div>
-                    <h3 class="text-white font-semibold mb-3">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-white">Home</a></li>
-                        <li><a href="movies.html" class="hover:text-white">Browse Movies</a></li>
-                        <li><a href="details.html" class="hover:text-white">Movie Details</a></li>
-                    </ul>
-                </div>
 
-                <!-- Newsletter / Contact -->
-                <div>
-                    <h3 class="text-white font-semibold mb-3">Stay Updated</h3>
-                    <p class="text-sm mb-3">Subscribe for latest movie updates</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Enter your email"
-                            class="w-full px-3 py-2 rounded-l bg-gray-800 text-white focus:outline-none">
-                        <button class="bg-red-700 px-4 py-2 rounded-r text-white hover:bg-red-800">
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
+ 
+       <!-- FOOTER -->
+ 
+  <footer class="bg-[#1c1c1c] border-t border-white/10 text-gray-400 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <!-- Bottom -->
-            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
-                © 2026 FIVE WATCH. All rights reserved.
-            </div>
-
+        <div>
+          <h2 class="text-white text-xl font-bold mb-3">
+            <span class="text-red-600">FIVE</span>WATCH
+          </h2>
+          <p class="text-sm leading-relaxed">
+            Your go-to platform for discovering and streaming the best movies anytime, anywhere.
+          </p>
         </div>
-    </footer>
 
+        <div>
+          <h3 class="text-white font-semibold mb-3">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="../../index.html" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="movies.html"      class="hover:text-white transition-colors">Browse Movies</a></li>
+            <li><a href="details.html"     class="hover:text-white transition-colors">Movie Details</a></li>
+            <li><a href="login.html"       class="hover:text-white transition-colors">Login</a></li>
+          </ul>
+        </div>
 
+        <div>
+          <h3 class="text-white font-semibold mb-3">Stay Updated</h3>
+          <p class="text-sm mb-3">Subscribe for latest movie updates</p>
+          <div class="flex">
+            <input type="email" placeholder="Enter your email"
+              class="w-full px-3 py-2 rounded-l bg-gray-800 text-white text-sm focus:outline-none">
+            <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r text-white text-sm font-semibold transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
 
+      </div>
 
+      <div class="border-t border-white/10 mt-8 pt-6 text-center text-xs md:text-sm">
+        &copy; 2026 FiveWatch — Educational Project
+      </div>
 
+    </div>
+  </footer>
 
+  <script>
+    const loadingEl = document.getElementById('loading');
+    const containerEl = document.getElementById('container');
+    if (containerEl && loadingEl) {
+      const obs = new MutationObserver(function () {
+        if (containerEl.innerHTML.trim() !== '') {
+          loadingEl.style.display = 'none';
+          obs.disconnect();
+        }
+      });
+      obs.observe(containerEl, { childList: true, subtree: true });
+    }
+  </script>
 
-
-
-
-    <script>
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    </script>
+  <script src="../../js_pages/script.js"></script>
 
 </body>
-
 </html>

@@ -1,19 +1,26 @@
 // ═══════════════════════════════════════════════
 //  HAMBURGER MENU TOGGLE
+//  Wrapped in if check — will NOT crash on pages
+//  that don't have a hamburger button
 // ═══════════════════════════════════════════════
-document.getElementById('hamburger').addEventListener('click', function () {
-  const menu = document.getElementById('mobile-menu');
-  menu.classList.toggle('hidden');
-  menu.classList.toggle('flex');
-});
+const hamburgerBtn = document.getElementById('hamburger');
+if (hamburgerBtn) {
+  hamburgerBtn.addEventListener('click', function () {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    }
+  });
+}
 
 
 // ═══════════════════════════════════════════════
-//  MOVIES LISTING — movies.html
+//  MOVIES LISTING — src/pages/movies.html
 // ═══════════════════════════════════════════════
 const moviesContainer = document.getElementById("movies-container");
 if (moviesContainer) {
-  fetch("/js_pages/movies_db.json")
+  fetch("../../js_pages/movies_db.json")
     .then((response) => response.json())
     .then((data) => {
       data.movies.forEach((movie) => {
@@ -54,21 +61,21 @@ if (moviesContainer) {
 
 
 // ═══════════════════════════════════════════════
-//  MOVIE DETAILS — details.html
+//  MOVIE DETAILS — src/pages/details.html
 // ═══════════════════════════════════════════════
 const detailsContainer = document.getElementById("container");
 if (detailsContainer) {
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
 
-  fetch("/js_pages/movies_db.json")
+  fetch("../../js_pages/movies_db.json")
     .then((response) => response.json())
     .then((data) => {
       const movie = data.movies.find((m) => m.imdbID === movieId);
 
       if (!movie) {
         detailsContainer.innerHTML =
-          "<p class='text-gray-400'>Movie not found.</p>";
+          "<p class='text-gray-400 text-center py-20'>Movie not found. Please go back and select a movie.</p>";
         return;
       }
 
@@ -102,11 +109,11 @@ if (detailsContainer) {
               <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title + ' full movie')}"
                 target="_blank"
                 class="bg-red-600 hover:bg-red-700 px-8 py-3 rounded font-semibold transition-colors inline-flex items-center gap-2">
-                ▶ Watch Movie
+                &#9654; Watch Movie
               </a>
               <a href="#trailer"
                 class="border border-white/40 hover:bg-white/10 px-8 py-3 rounded font-semibold transition-colors inline-flex items-center gap-2">
-                🎬 Watch Trailer
+                Watch Trailer
               </a>
             </div>
 
