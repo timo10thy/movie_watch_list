@@ -1,7 +1,5 @@
 // ═══════════════════════════════════════════════
 //  HAMBURGER MENU TOGGLE
-//  Wrapped in if check — will NOT crash on pages
-//  that don't have a hamburger button
 // ═══════════════════════════════════════════════
 const hamburgerBtn = document.getElementById('hamburger');
 if (hamburgerBtn) {
@@ -16,11 +14,23 @@ if (hamburgerBtn) {
 
 
 // ═══════════════════════════════════════════════
-//  MOVIES LISTING — src/pages/movies.html
+//  DETECT WHICH PAGE IS RUNNING
+//  index.html is at root — needs src/pages/details.html
+//  movies.html is at src/pages/ — needs just details.html
+// ═══════════════════════════════════════════════
+const currentPath = window.location.pathname;
+const isHomePage  = currentPath.endsWith('index.html') || currentPath === '/' || currentPath.endsWith('.vercel.app/');
+const detailsPath = isHomePage ? 'src/pages/details.html' : 'details.html';
+const jsonPath    = isHomePage ? 'js_pages/movies_db.json' : '../../js_pages/movies_db.json';
+
+
+// ═══════════════════════════════════════════════
+//  MOVIES LISTING
+//  Works on both index.html and movies.html
 // ═══════════════════════════════════════════════
 const moviesContainer = document.getElementById("movies-container");
 if (moviesContainer) {
-  fetch("../../js_pages/movies_db.json")
+  fetch(jsonPath)
     .then((response) => response.json())
     .then((data) => {
       data.movies.forEach((movie) => {
@@ -47,7 +57,7 @@ if (moviesContainer) {
             </div>
             <p class="text-gray-400 text-xs mb-3">${movie.Genre}</p>
             <p class="text-gray-400 text-xs leading-relaxed mb-4">${movie.Plot}</p>
-            <a href="details.html?id=${movie.imdbID}"
+            <a href="${detailsPath}?id=${movie.imdbID}"
                class="block bg-red-600 hover:bg-red-700 text-center py-2 rounded text-sm font-semibold transition-colors">
               View Details
             </a>
@@ -65,7 +75,7 @@ if (moviesContainer) {
 // ═══════════════════════════════════════════════
 const detailsContainer = document.getElementById("container");
 if (detailsContainer) {
-  const params = new URLSearchParams(window.location.search);
+  const params  = new URLSearchParams(window.location.search);
   const movieId = params.get("id");
 
   fetch("../../js_pages/movies_db.json")
@@ -94,7 +104,6 @@ if (detailsContainer) {
             <p class="text-red-600 text-sm font-semibold tracking-widest uppercase mb-2">${movie.Genre}</p>
             <h1 class="text-5xl font-[Bebas_Neue] leading-none mb-4">${movie.Title}</h1>
 
-            <!-- Badges -->
             <div class="flex flex-wrap gap-3 mb-6">
               <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">&#9733; ${movie.imdbRating}</span>
               <span class="bg-[#1c1c1c] text-gray-300 text-xs px-3 py-1 rounded">${movie.Year}</span>
@@ -104,7 +113,6 @@ if (detailsContainer) {
 
             <p class="text-gray-300 leading-relaxed mb-6">${movie.Plot}</p>
 
-            <!-- Watch & Trailer Buttons -->
             <div class="flex flex-wrap gap-4 mb-8">
               <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title + ' full movie')}"
                 target="_blank"
@@ -117,7 +125,6 @@ if (detailsContainer) {
               </a>
             </div>
 
-            <!-- Details Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div>
                 <p class="text-gray-500 text-xs uppercase tracking-wider mb-1">Director</p>
@@ -153,7 +160,6 @@ if (detailsContainer) {
               </div>
             </div>
 
-            <!-- Back Button -->
             <div class="mt-8">
               <a href="movies.html"
                 class="border border-white/40 hover:bg-white/10 px-8 py-3 rounded font-semibold transition-colors inline-block">
@@ -164,7 +170,6 @@ if (detailsContainer) {
           </div>
         </div>
 
-        <!-- Trailer Section -->
         <div id="trailer" class="mt-16">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-1 h-7 bg-red-600 rounded"></div>
@@ -207,7 +212,7 @@ function hideError(id) {
 
 
 // ═══════════════════════════════════════════════
-//  SIGN UP LOGIC — src/pages/signup.html
+//  SIGN UP LOGIC
 // ═══════════════════════════════════════════════
 const signupBtn = document.getElementById('signup-btn');
 if (signupBtn) {
@@ -224,24 +229,20 @@ if (signupBtn) {
       showError('signup-error', 'All fields are required. Please fill in every field.');
       return;
     }
-
     if (!email.includes('@') || !email.includes('.')) {
       showError('signup-error', 'Please enter a valid email address.');
       return;
     }
-
     if (password !== confirmPassword) {
       showError('signup-error', 'Passwords do not match. Please try again.');
       return;
     }
-
     if (password.length < 6) {
       showError('signup-error', 'Password must be at least 6 characters long.');
       return;
     }
 
     const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
-
     const emailExists = existingUsers.find(function (user) {
       return user.email.toLowerCase() === email.toLowerCase();
     });
@@ -251,13 +252,7 @@ if (signupBtn) {
       return;
     }
 
-    const newUser = {
-      username: username,
-      email:    email.toLowerCase(),
-      password: password,
-    };
-
-    existingUsers.push(newUser);
+    existingUsers.push({ username, email: email.toLowerCase(), password });
     localStorage.setItem('users', JSON.stringify(existingUsers));
 
     const formCard = document.getElementById('form-card');
@@ -279,13 +274,12 @@ if (signupBtn) {
         window.location.href = 'login.html';
       }
     }, 1000);
-
   });
 }
 
 
 // ═══════════════════════════════════════════════
-//  LOGIN LOGIC — src/pages/login.html
+//  LOGIN LOGIC
 // ═══════════════════════════════════════════════
 const loginBtn = document.getElementById('login-btn');
 if (loginBtn) {
@@ -300,14 +294,12 @@ if (loginBtn) {
       showError('login-error', 'Both email and password are required.');
       return;
     }
-
     if (!email.includes('@') || !email.includes('.')) {
       showError('login-error', 'Please enter a valid email address.');
       return;
     }
 
-    const savedUsers = JSON.parse(localStorage.getItem('users')) || [];
-
+    const savedUsers  = JSON.parse(localStorage.getItem('users')) || [];
     const matchedUser = savedUsers.find(function (user) {
       return (
         user.email.toLowerCase() === email.toLowerCase() &&
@@ -320,9 +312,8 @@ if (loginBtn) {
       return;
     }
 
-    localStorage.setItem('currentUser', matchedUser.email);
+    localStorage.setItem('currentUser',     matchedUser.email);
     localStorage.setItem('currentUsername', matchedUser.username.toUpperCase());
-
     window.location.href = '../../index.html';
   });
 }
